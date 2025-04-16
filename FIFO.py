@@ -80,8 +80,9 @@ class Report:
 		self.sales += other.sales
 
 	def to_nec_csv_row(self, desc: str) -> str:
-		ret = desc
-		ret += f" - {self.amount} shares,"
+		ret = '\"'
+		ret += desc.replace('\"', "\"\"")
+		ret += f" - {self.amount} shares\","
 		ret += self.date_acquired.strftime("%m/%d/%Y")
 		ret += ','
 		ret += self.date_sold.strftime("%m/%d/%Y")
